@@ -14,9 +14,10 @@ License:        BSD
 URL:            https://github.cop/jupyter/%{name}
 Source0:        https://github.com/jupyter/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 
-BuildArch:      noarch
+BuildArch:      x86_64
 BuildRequires:  python36-devel
 BuildRequires:  python36-setuptools
+BuildRequires:  libcurl-devel
 BuildRequires:  nodejs
 BuildRequires:  git
 
