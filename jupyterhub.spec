@@ -22,6 +22,7 @@ BuildRequires:  git
 
 Requires:       nodejs
 Requires:       python36
+Requires:       python36-setuptools
 
 %description
 JupyterHub is a multi-user server that manages and proxies multiple instances
@@ -54,8 +55,8 @@ python36 setup.py install --skip-build --root %{buildroot}
 pip3 install --target %{buildroot}/usr/lib/python3.6/site-packages -r %{_builddir}/%{name}-%{version}/requirements.txt
 pip3 install --target %{buildroot}/usr/lib/python3.6/site-packages notebook jupyter
 
-npm install -g --prefix %{buildroot}/usr/lib
-npm install -g --prefix %{buildroot}/usr/lib configurable-http-proxy
+npm install -g --prefix %{buildroot}/usr
+npm install -g --prefix %{buildroot}/usr configurable-http-proxy
 
 mkdir -p %{buildroot}/etc/jupyterhub
 
@@ -70,4 +71,4 @@ mkdir -p %{buildroot}/usr/lib/systemd/system/
 /usr/share/*
 /usr/lib/*
 /etc/jupyterhub/*
-
+/usr/*
