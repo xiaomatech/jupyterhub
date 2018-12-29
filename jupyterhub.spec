@@ -61,6 +61,7 @@ mkdir -p %{buildroot}/etc/jupyterhub
 
 %{buildroot}/usr/bin/jupyterhub --generate-config -f %{buildroot}/etc/jupyterhub/jupyterhub_config.py
 
+mkdir -p %{buildroot}/usr/lib/systemd/system/
 %{__cp} -rp %{_sourcedir}/jupyterhub.service %{buildroot}/usr/lib/systemd/system/
 
 %files
