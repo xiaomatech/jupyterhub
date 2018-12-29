@@ -58,17 +58,15 @@ pip3 install --target %{buildroot}/usr/lib/python3.6/site-packages notebook jupy
 npm install -g --prefix %{buildroot}/usr
 npm install -g --prefix %{buildroot}/usr configurable-http-proxy
 
-mkdir -p %{buildroot}/etc/jupyterhub
-
-%{buildroot}/usr/bin/jupyterhub --generate-config -f %{buildroot}/etc/jupyterhub/jupyterhub_config.py
-
 mkdir -p %{buildroot}/usr/lib/systemd/system/
 %{__cp} -rp %{_sourcedir}/jupyterhub.service %{buildroot}/usr/lib/systemd/system/
+
+%post
+jupyterhub --generate-config -f /etc/jupyterhub/jupyterhub_config.py
 
 %files
 %{_bindir}/jupyterhub
 %{_bindir}/jupyterhub-singleuser
 /usr/share/*
 /usr/lib/*
-/etc/jupyterhub/*
 /usr/*
