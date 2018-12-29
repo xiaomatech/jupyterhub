@@ -18,6 +18,7 @@ BuildArch:      x86_64
 BuildRequires:  python36-devel
 BuildRequires:  python36-setuptools
 BuildRequires:  libcurl-devel
+BuildRequires:  openssl-devel
 BuildRequires:  nodejs
 BuildRequires:  git
 
@@ -52,9 +53,10 @@ python36 setup.py build
 easy_install-3.6 pip
 
 %install
+export PYCURL_SSL_LIBRARY=openssl
 python36 setup.py install --skip-build --root %{buildroot}
 pip3 install --target %{buildroot}/usr/lib/python3.6/site-packages -r %{_builddir}/%{name}-%{version}/requirements.txt
-pip3 install --target %{buildroot}/usr/lib/python3.6/site-packages notebook nbviewer jupyter oauthenticator jupyterhub-ldapauthenticator batchspawner jupyterhub-systemdspawner
+pip3 install --target %{buildroot}/usr/lib/python3.6/site-packages notebook jupyter oauthenticator jupyterhub-ldapauthenticator batchspawner jupyterhub-systemdspawner
 
 npm install -g --prefix %{buildroot}/usr
 npm install -g --prefix %{buildroot}/usr configurable-http-proxy
