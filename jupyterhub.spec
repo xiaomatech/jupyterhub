@@ -53,7 +53,7 @@ easy_install-3.6 pip
 %install
 python36 setup.py install --skip-build --root %{buildroot}
 pip3 install --target %{buildroot}/usr/lib/python3.6/site-packages -r %{_builddir}/%{name}-%{version}/requirements.txt
-pip3 install --target %{buildroot}/usr/lib/python3.6/site-packages notebook jupyter
+pip3 install --target %{buildroot}/usr/lib/python3.6/site-packages notebook nbviewer jupyter oauthenticator jupyterhub-ldapauthenticator batchspawner jupyterhub-systemdspawner
 
 npm install -g --prefix %{buildroot}/usr
 npm install -g --prefix %{buildroot}/usr configurable-http-proxy
